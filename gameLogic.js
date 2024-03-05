@@ -61,55 +61,101 @@ function _selectPlayers() {
     }
   }
 
+  
   _gameDesign(player1, player2);
 }
 
 //game design
 function _gameDesign(player1, player2) {
-  console.log(`welcome to game ${player1} & ${player2}`);
+  console.log(`Welcome to the game ${player1} & ${player2}`);
+
   const player1Details = PlayersDetails.get(player1);
   const player2Details = PlayersDetails.get(player2);
-  var _player1_health = player1Details.health;
-  var _player2_health = player2Details.health;
+
+  // Check who starts the game based on initial health
+  if (player1Details.health > player2Details.health) {
+    var currentPlayer = player1;
+    var otherPlayer = player2;
+  } else if (player1Details.health == player2Details.health) {
+    const diceRoll = (attackDice = Math.floor(Math.random() * 2) + 1);
+    console.log(
+      `Dice roll to select who get to start the game as both healths are equal ${diceRoll}`
+    );
+    if (diceRoll == 1) {
+      var currentPlayer = player1;
+      var otherPlayer = player2;
+    } else {
+      var currentPlayer = player2;
+      var otherPlayer = player1;
+    }
+  } else {
+    var currentPlayer = player2;
+    var otherPlayer = player1;
+  }
+
+  console.log(`${currentPlayer} will start the game.`);
+
+  var currentPlayerDetails = PlayersDetails.get(currentPlayer);
+  var otherPlayerDetails = PlayersDetails.get(otherPlayer);
+
+  var _currentPlayer_health = currentPlayerDetails.health;
+  var _otherPlayer_health = otherPlayerDetails.health;
+
   var attackDice;
   var defendDice;
   var attackStrength;
   var defendStrength;
+
   while (
-    Number(_player1_health) > Number(0) &&
-    Number(_player2_health) > Number(0)
+    Number(_currentPlayer_health) > Number(0) &&
+    Number(_otherPlayer_health) > Number(0)
   ) {
-    if (Number(_player1_health) > Number(_player2_health)) {
-      attackDice = Math.floor(Math.random() * 6) + 1;
-      defendDice = Math.floor(Math.random() * 6) + 1;
-      attackStrength = Number(attackDice * player1Details.attack);
-      defendStrength = Number(defendDice * player2Details.strength);
-      if (Number(attackStrength) > Number(defendStrength)) {
-        _player2_health = Math.abs(
-          Number(attackStrength) - Number(defendStrength)
-        );
-      } else {
-        _player1_health = Math.abs(
-          Number(attackStrength) - Number(defendStrength)
-        );
-      }
+    attackDice = Math.floor(Math.random() * 6) + 1;
+    defendDice = Math.floor(Math.random() * 6) + 1;
+    attackStrength = Number(attackDice * currentPlayerDetails.attack);
+    defendStrength = Number(defendDice * otherPlayerDetails.strength);
+    console.log(
+      `attack ${attackDice}  defend ${defendDice}  current_player ${currentPlayer} other_player: ${otherPlayer}`
+    );
+
+    console.log(
+      `attackStrength ${attackStrength}  defendStrength ${defendStrength}`
+    );
+
+    if (Number(attackStrength) > Number(defendStrength)) {
+      _otherPlayer_health = Math.max(
+        Number(_otherPlayer_health) -
+          Math.abs(Number(attackStrength) - Number(defendStrength)),
+        0
+      );
+    } else {
+      _currentPlayer_health = Math.max(
+        Number(_currentPlayer_health) -
+          Math.abs(Number(attackStrength) - Number(defendStrength)),
+        0
+      );
     }
 
-    else{
-         attackDice = Math.floor(Math.random() * 6) + 1;
-         defendDice = Math.floor(Math.random() * 6) + 1;
-         attackStrength = Number(attackDice * player2Details.attack);
-         defendStrength = Number(defendDice * player1Details.strength);
-         if (Number(attackStrength) > Number(defendStrength)) {
-           _player1_health = Math.abs(
-             Number(attackStrength) - Number(defendStrength)
-           );
-         } else {
-           _player2_health = Math.abs(
-             Number(attackStrength) - Number(defendStrength)
-           );
-         }
-    }
+    console.log(
+      `current_player(${currentPlayer}) heath : ${_currentPlayer_health} and other_player(${otherPlayer}) health  : ${_otherPlayer_health}`
+    );
+
+    [currentPlayer, otherPlayer] = [otherPlayer, currentPlayer];
+    [currentPlayerDetails, otherPlayerDetails] = [
+      otherPlayerDetails,
+      currentPlayerDetails,
+    ];
+    [_currentPlayer_health, _otherPlayer_health] = [
+      _otherPlayer_health,
+      _currentPlayer_health,
+    ];
+  }
+
+  // Determine the winner
+  if (Number(_currentPlayer_health) > 0) {
+    console.log(`${currentPlayer} wins the game!`);
+  } else {
+    console.log(`${otherPlayer} wins the game!`);
   }
 }
 
