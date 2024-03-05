@@ -138,7 +138,7 @@ function _gameDesign(player1, player2) {
     }
 
     console.log(
-      `current_player(${currentPlayer}) heath : ${_currentPlayer_health} and other_player(${otherPlayer}) health : ${_otherPlayer_health}`
+      `current_player(${currentPlayer}) health : ${_currentPlayer_health} and other_player(${otherPlayer}) health : ${_otherPlayer_health}`
     );
 
     //swaping the below details as the turn of the player changes
