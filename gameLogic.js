@@ -116,7 +116,7 @@ function _gameDesign(player1, player2) {
     attackStrength = Number(attackDice * currentPlayerDetails.attack);
     defendStrength = Number(defendDice * otherPlayerDetails.strength);
     console.log(
-      `attack ${attackDice}  defend ${defendDice}  current_player ${currentPlayer} other_player: ${otherPlayer}`
+      `attack ${attackDice}  defend ${defendDice}  current_player: ${currentPlayer} other_player: ${otherPlayer}`
     );
 
     console.log(
@@ -138,7 +138,7 @@ function _gameDesign(player1, player2) {
     }
 
     console.log(
-      `current_player(${currentPlayer}) heath : ${_currentPlayer_health} and other_player(${otherPlayer}) health  : ${_otherPlayer_health}`
+      `current_player(${currentPlayer}) heath : ${_currentPlayer_health} and other_player(${otherPlayer}) health : ${_otherPlayer_health}`
     );
 
     //swaping the below details as the turn of the player changes
