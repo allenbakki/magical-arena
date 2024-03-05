@@ -10,6 +10,7 @@ function initializePlayersDetails() {
 }
 
 // Enter or Input details of players to play game Magical-Arena
+//custom inputs , user can enter the data accordingly
 function _inputPlayers() {
   let flag = true;
   initializePlayersDetails();
@@ -58,10 +59,24 @@ function _inputPlayers() {
   }
 }
 
-
-
 export function getPlayersDetails() {
   return PlayersDetails;
 }
 
 export { _inputPlayers, PlayersDetails };
+
+// function to check test cases as incase of custom input i have a check of same name and others
+function inputPlayers() {
+  let flag = true;
+  initializePlayersDetails();
+
+  var arenaPlayer = new Player("neha", 112, 14, 100);
+  var arenaPlayer1 = new Player("reshma", 112, 14, 100);
+  var arenaPlayer2 = new Player("purvi", 112, 14, 1001);
+
+  PlayersDetails.set("neha", arenaPlayer);
+  PlayersDetails.set("reshma", arenaPlayer1);
+  PlayersDetails.set("purvi", arenaPlayer2);
+}
+
+export { inputPlayers };

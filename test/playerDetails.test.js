@@ -1,14 +1,14 @@
-import { PlayersDetails, _inputPlayers } from "../playerDetails.js";
+import { PlayersDetails, inputPlayers } from "../playerDetails.js";
 import { expect } from "chai";
 
 // to check the input size it should be greater than or equal to 2;
 
 describe("check for the no of players", function () {
-  it("1. checking for players - at least two players must be there to start the game", async function () {
+  it("1. checking for players - at least two players must be there to start the game", function () {
     try {
-      //   await _inputPlayers();
+      inputPlayers();
 
-      expect(2).to.be.at.least(2);
+      expect(PlayersDetails.size).to.be.at.least(2);
     } catch (error) {
       console.log(error);
     }
@@ -16,9 +16,9 @@ describe("check for the no of players", function () {
 
   it("1. checking for duplicate players ", async function () {
     try {
-      //   await _inputPlayers();
+      inputPlayers();
 
-      expect(2).to.be.at.least(2);
+      expect(PlayersDetails.size).to.be.at.least(2);
     } catch (error) {
       console.log(error);
     }
