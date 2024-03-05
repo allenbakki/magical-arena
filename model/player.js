@@ -1,8 +1,9 @@
 class Player {
-  constructor(name, strength, attack) {
+  constructor(name, strength, attack, health) {
     this._name = name;
     this._strength = strength;
     this._attack = attack;
+    this._health = health;
   }
 
   get name() {
@@ -24,6 +25,13 @@ class Player {
   }
   set attack(attack) {
     this._attack = attack;
+  }
+
+  get health() {
+    return this._health;
+  }
+  set health(health) {
+    this._health = health;
   }
 }
 
