@@ -41,7 +41,7 @@ function _inputPlayers() {
     PlayersDetails.set(name, arenaPlayer);
 
     const flagValue = getUserInput(
-      "Enter 1 if you want add another player.\nEnter 0 to exit or not to add the players: "
+      "Enter 1 if you want add another player.Enter 0 to exit or not to add the players: "
     );
     if (flagValue == "1");
     else {
