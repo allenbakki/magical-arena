@@ -4,6 +4,7 @@ import { _selectPlayers } from "./gameLogic.js";
 
 var PlayersDetails = new Map();
 
+// Enter or Input details of players to play game Magical-Arena
 function _inputPlayers() {
   let flag = true;
 
@@ -16,27 +17,22 @@ function _inputPlayers() {
       );
     }
     var strength = Number(getUserInput(`Enter the strength of ${name}: `));
-    console.log(typeof strength, strength);
     while (isNaN(strength) || strength < 0) {
       console.log("The strength value should be a postive number");
       strength = getUserInput(`Enter the strength value of ${name}: `);
     }
     var attack = Number(getUserInput(`Enter the attack value of ${name}: `));
-    console.log(typeof attack, attack);
     while (isNaN(attack) || attack < 0) {
       console.log("The attack value should be a postive number");
       attack = getUserInput(`Enter the attack value of ${name}: `);
     }
     var health = Number(getUserInput(`Enter the health value of ${name}: `));
-    console.log(typeof health, health);
     while (isNaN(health) || health < 0) {
       console.log("The health value should be a postive number");
       health = getUserInput(`Enter the health value of ${name}: `);
     }
 
     var arenaPlayer = new Player(name, strength, attack, health);
-
-    // console.log("User input:", name, strength, attack, health);
 
     PlayersDetails.set(name, arenaPlayer);
 
@@ -55,22 +51,23 @@ function _inputPlayers() {
     }
   }
 
-  //   PlayersDetails.forEach((value, key) => {
-  //     console.log(`key: ${key} and value ${value.name}`);
-  //   });
-
   //flag to make sure how many times the user want to play game
-
   let gameFlag = true;
+
   while (gameFlag) {
     //choose players to start the game
     _selectPlayers();
 
     const playgame = getUserInput(
-      "Enter yes to play another game or no to exit: "
+      "Enter 'yes' or 'y' or 'YES' OR 'Y' to play another game or Press 'ENTER' to exit: "
     );
 
-    if (playgame == "yes");
+    if (
+      playgame == "yes" ||
+      playgame == "YES" ||
+      playgame == "Y" ||
+      playgame == "y"
+    );
     else {
       gameFlag = false;
     }

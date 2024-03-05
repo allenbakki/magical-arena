@@ -1,3 +1,4 @@
+// players model class to fetch the data of players and a constructor to set the details of players;
 class Player {
   constructor(name, strength, attack, health) {
     this._name = name;
@@ -8,9 +9,6 @@ class Player {
 
   get name() {
     return this._name;
-  }
-  set name(name) {
-    this._name = name;
   }
 
   get strength() {

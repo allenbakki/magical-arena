@@ -4,7 +4,7 @@ import { getUserInput } from "./index.js";
 //select players to start the game
 function _selectPlayers() {
   console.log(
-    "Select two players from the list below to start the Magical Arena\n"
+    "Select two players from the List below to start the Magical Arena\n"
   );
   PlayersDetails.forEach((key, value) => {
     console.log(`${value}\n`);
@@ -61,13 +61,14 @@ function _selectPlayers() {
     }
   }
 
-  
   _gameDesign(player1, player2);
 }
 
 //game design
 function _gameDesign(player1, player2) {
-  console.log(`Welcome to the game ${player1} & ${player2}`);
+  console.log(
+    `Welcome to the game Player 1: ${player1} & Player 2: ${player2}`
+  );
 
   const player1Details = PlayersDetails.get(player1);
   const player2Details = PlayersDetails.get(player2);
@@ -77,11 +78,11 @@ function _gameDesign(player1, player2) {
     var currentPlayer = player1;
     var otherPlayer = player2;
   } else if (player1Details.health == player2Details.health) {
-    const diceRoll = (attackDice = Math.floor(Math.random() * 2) + 1);
+    const tossCoin = (attackDice = Math.floor(Math.random() * 2) + 1);
     console.log(
-      `Dice roll to select who get to start the game as both healths are equal ${diceRoll}`
+      `Toss coin to select who get to start the game as both healths are equal if result is 1 then Player 1 get to start the game otherwise the Player 2, so the result after tossing is ${tossCoin}`
     );
-    if (diceRoll == 1) {
+    if (tossCoin == 1) {
       var currentPlayer = player1;
       var otherPlayer = player2;
     } else {
