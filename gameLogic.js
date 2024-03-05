@@ -64,7 +64,8 @@ function _selectPlayers() {
     }
   }
 
-  _gameDesign(player1, player2);
+  return { player1, player2 };
+
 }
 
 //game design

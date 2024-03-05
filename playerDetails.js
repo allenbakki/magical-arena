@@ -56,29 +56,9 @@ function _inputPlayers() {
       }
     }
   }
-
-  // flag to make sure how many times the user want to play game
-  let gameFlag = true;
-
-  while (gameFlag) {
-    //choose players to start the game
-    _selectPlayers();
-
-    const playgame = getUserInput(
-      "Enter 'yes' or 'y' or 'YES' OR 'Y' to play another game or Press 'ENTER' to exit: "
-    );
-
-    if (
-      playgame == "yes" ||
-      playgame == "YES" ||
-      playgame == "Y" ||
-      playgame == "y"
-    );
-    else {
-      gameFlag = false;
-    }
-  }
 }
+
+
 
 export function getPlayersDetails() {
   return PlayersDetails;
