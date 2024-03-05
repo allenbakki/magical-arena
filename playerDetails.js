@@ -13,7 +13,7 @@ function _inputPlayers() {
 
     if (PlayersDetails.has(name)) {
       name = getUserInput(
-        " Player Name already exists please enter unique player name: "
+        "Player Name already exists please enter unique player name: "
       );
     }
     var strength = Number(getUserInput(`Enter the strength of ${name}: `));

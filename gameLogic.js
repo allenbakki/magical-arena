@@ -141,11 +141,15 @@ function _gameDesign(player1, player2) {
       `current_player(${currentPlayer}) heath : ${_currentPlayer_health} and other_player(${otherPlayer}) health  : ${_otherPlayer_health}`
     );
 
+    //swaping the below details as the turn of the player changes
+    //swap the players
     [currentPlayer, otherPlayer] = [otherPlayer, currentPlayer];
+    //swap the player details
     [currentPlayerDetails, otherPlayerDetails] = [
       otherPlayerDetails,
       currentPlayerDetails,
     ];
+    //swap the players health details
     [_currentPlayer_health, _otherPlayer_health] = [
       _otherPlayer_health,
       _currentPlayer_health,
