@@ -1,4 +1,4 @@
-Designed MAgical Arena
+Designed Magical Arena
 
 Prerequisites:
 
