@@ -59,8 +59,22 @@ function _inputPlayers() {
   //     console.log(`key: ${key} and value ${value.name}`);
   //   });
 
-  //choose players to start the game
-  _selectPlayers();
+  //flag to make sure how many times the user want to play game
+
+  let gameFlag = true;
+  while (gameFlag) {
+    //choose players to start the game
+    _selectPlayers();
+
+    const playgame = getUserInput(
+      "Enter yes to play another game or no to exit: "
+    );
+
+    if (playgame == "yes");
+    else {
+      gameFlag = false;
+    }
+  }
 }
 
 export { PlayersDetails, _inputPlayers };
