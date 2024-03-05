@@ -1,8 +1,11 @@
-import { PlayersDetails } from "./playerDetails.js";
+import { getPlayersDetails } from "./playerDetails.js";
 import { getUserInput } from "./index.js";
 
 //select players to start the game
+
 function _selectPlayers() {
+  const PlayersDetails = getPlayersDetails();
+
   console.log(
     "Select two players from the List below to start the Magical Arena\n"
   );
@@ -66,6 +69,8 @@ function _selectPlayers() {
 
 //game design
 function _gameDesign(player1, player2) {
+  const PlayersDetails = getPlayersDetails();
+
   console.log(
     `Welcome to the game Player 1: ${player1} & Player 2: ${player2}`
   );

@@ -2,16 +2,22 @@ import Player from "./model/player.js";
 import { getUserInput } from "./index.js";
 import { _selectPlayers } from "./gameLogic.js";
 
+//map to store player details to identify details of player with key as name of player
 var PlayersDetails = new Map();
+
+function initializePlayersDetails() {
+  PlayersDetails = new Map();
+}
 
 // Enter or Input details of players to play game Magical-Arena
 function _inputPlayers() {
   let flag = true;
+  initializePlayersDetails();
 
   while (flag) {
     let name = getUserInput("Enter Player Name: ");
 
-    if (PlayersDetails.has(name)) {
+    if (PlayersDetails != null && PlayersDetails.has(name)) {
       name = getUserInput(
         "Player Name already exists please enter unique player name: "
       );
@@ -41,7 +47,7 @@ function _inputPlayers() {
     );
     if (flagValue == "1");
     else {
-      if (PlayersDetails.size >= Number(2)) {
+      if (PlayersDetails.size >= 2) {
         flag = false;
       } else {
         console.log(
@@ -51,7 +57,7 @@ function _inputPlayers() {
     }
   }
 
-  //flag to make sure how many times the user want to play game
+  // flag to make sure how many times the user want to play game
   let gameFlag = true;
 
   while (gameFlag) {
@@ -74,4 +80,8 @@ function _inputPlayers() {
   }
 }
 
-export { PlayersDetails, _inputPlayers };
+export function getPlayersDetails() {
+  return PlayersDetails;
+}
+
+export { _inputPlayers, PlayersDetails };

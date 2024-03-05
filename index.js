@@ -12,5 +12,4 @@ function getUserInput(promptMessage) {
 //To enter the details of players.
 _inputPlayers();
 
-
 export { getUserInput };
